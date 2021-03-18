@@ -126,7 +126,7 @@ export default class Slider extends React.Component {
       flex: 1,
       paddingTop:40,
       fontSize:50,
-      backgroundColor: '#fff',
+      backgroundColor: 'rgb(255,255,255)',
       alignItems: 'center',
       justifyContent: 'center',
     },
