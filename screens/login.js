@@ -1,42 +1,48 @@
 import React from 'react';
-import {Stylesheet,Text,View,Image, StyleSheet,TextInput} from 'react-native';
+import {Text,View,Image, StyleSheet,TextInput} from 'react-native';
 import { SocialIcon } from 'react-native-elements'
-
+import {useNavigation} from '@react-navigation/native'
 
 const upperimage= "../assets/images/upperimage.png"
 const bannerimage1= "../assets/images/banner1.png"
 
 const login =() =>{
-return(
-
-<View > 
-<Image source={require(upperimage)} style= {styles.upperimage}/> 
-<Image source={require(bannerimage1)} style= {styles.banner1}/>
-<TextInput  placeholder="Enter your mobile number" style={styles.input}/>
-<Text style={styles.connect}>Or Connect With</Text>   
-
-  <View >
-    <SocialIcon style={styles.fbicon}
-    type='facebook'
-    
-  />
+  const navigation= useNavigation();
   
-  <SocialIcon style={styles.googleicon}
-    type='google'
-  />
   
-  <SocialIcon style={styles.appleicon}
-    type='apple'
-  />
+  return(
+    <View > 
+    <Image source={require(upperimage)} style= {styles.upperimage}/> 
+    <Image source={require(bannerimage1)} style= {styles.banner1}/>
+    <TextInput keyboardType = 'numeric' placeholder="Enter your mobile number" style={styles.input}
+    maxLength={12}  autoFocus={true}
 
-  </View>
-  <Text style={styles.lasttext1}>By signinup, you are accepting</Text>   
-  <Text style={styles.lasttext2}>Our Terms Conditions and Privacy Policy</Text>   
-  </View>
+    onSubmitEditing={() => navigation.navigate('Otp')}
+    />
+      
+    <Text style={styles.connect}>Or Connect With </Text>   
     
-);
-}
+      <View >
+        <SocialIcon style={styles.fbicon}
+        type='facebook'
+        
+      />
+      
+      <SocialIcon style={styles.googleicon}
+        type='google'
+      />
+      
+      <SocialIcon style={styles.appleicon}
+        type='apple'
+      />
+    
+      </View>
+      <Text style={styles.lasttext1}>By signinup, you are accepting</Text>   
+      <Text style={styles.lasttext2}>Our Terms Conditions and Privacy Policy</Text>   
+      </View>
 
+    );
+}  
 export default login;
 
 const styles = StyleSheet.create({
@@ -95,4 +101,3 @@ const styles = StyleSheet.create({
           textDecorationLine: 'underline'
         }
   });
- 

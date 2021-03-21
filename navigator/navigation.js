@@ -15,7 +15,7 @@ export default function Navigation() {
     <Stack.Navigator initialRouteName="Slider" headerMode="none">
       <Stack.Screen name="Slider" component={Slider} />
       <Stack.Screen name="Login" component={login} />
-      <Stack.Screen name="OTP" component={otp} />
+      <Stack.Screen name="Otp" component={otp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
