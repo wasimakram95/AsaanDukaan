@@ -3,9 +3,12 @@ import { StyleSheet } from 'react-native';
 import { Content, Item, Input } from 'native-base';
 import { Grid, Col } from 'react-native-easy-grid';
 
+export const finalotp="";
+
 class OtpInputs extends React.Component {
     state={otp:[]};
     otpTextInput = [];
+    finalotp=[];
 
     componentDidMount() {
         this.otpTextInput[0]._root.focus();
@@ -42,7 +45,7 @@ class OtpInputs extends React.Component {
         const otp = this.state.otp;
         otp[index] = value;
         this.setState({ otp });
-        this.props.getOtp(otp.join(''));
+        finalotp=this.props.getOtp(otp.join(''));
     }
 
 
@@ -59,7 +62,7 @@ class OtpInputs extends React.Component {
 
 const styles = StyleSheet.create({
     gridPad: { 
-        marginTop:150,
+        marginTop:70,
         
        
      },

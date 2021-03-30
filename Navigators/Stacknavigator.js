@@ -1,23 +1,19 @@
 import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import Slider from '../screens/slidescreens';
-import login from '../screens/login';
-import otp from '../screens/otp';
+import Slider from "../Screens/slidescreens";
+import login from "../Screens/login"
+import otp from "../Screens/otp"
 
 const Stack = createStackNavigator();
 
-export default function Navigation() {
+export default function Stacknavigator() {
   return (
-    <NavigationContainer>
     <Stack.Navigator initialRouteName="Slider" headerMode="none">
       <Stack.Screen name="Slider" component={Slider} />
       <Stack.Screen name="Login" component={login} />
       <Stack.Screen name="Otp" component={otp} />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 
   

@@ -1,25 +1,62 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from "react";
 import {Text,View,Image, StyleSheet,TextInput} from 'react-native';
 import { SocialIcon } from 'react-native-elements'
 import {useNavigation} from '@react-navigation/native'
+import Error from "../Shared/Error";
+
+// Context
+import AuthGlobal from "../Context/store/AuthGlobal";
+import { loginUser } from "../Context/actions/Auth.actions";
 
 const upperimage= "../assets/images/upperimage.png"
 const bannerimage1= "../assets/images/banner1.png"
 
-const login =() =>{
+const login =(props) =>{
   const navigation= useNavigation();
   
-  
+  const context = useContext(AuthGlobal);
+  const [phone, setPhoneNo] = useState("");
+  const [error, setError] = useState("");
+  // const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (context.stateUser.isAuthenticated === true) {
+      props.navigation.navigate("Otp");
+    }
+  }, [context.stateUser.isAuthenticated]);
+
+  const handleSubmit = () => {
+    const user = {
+      phone,
+    };
+
+    if(phone === ""){
+      setError("Please fill your PhoneNo")
+    }
+    else{
+      loginUser(user, context.dispatch);
+
+    }
+  };
+
+
   return(
     <View > 
     <Image source={require(upperimage)} style= {styles.upperimage}/> 
     <Image source={require(bannerimage1)} style= {styles.banner1}/>
-    <TextInput keyboardType = 'numeric' placeholder="Enter your mobile number" style={styles.input}
-    maxLength={12}  autoFocus={true}
+    
+    <TextInput keyboardType = 'phone-pad' placeholder="Enter your Phone number" style={styles.input}
+    name={"phone"} id={"phone"} value={phone} maxLength={13} autoFocus={true}  
+    onChangeText={(text) => setPhoneNo(text.toLowerCase())}
 
-    onSubmitEditing={() => navigation.navigate('Otp')}
+    onSubmitEditing={() => 
+      {
+        handleSubmit();
+        
+      }
+    }
     />
-      
+      {error ? <Error message={error} /> : null} 
     <Text style={styles.connect}>Or Connect With </Text>   
     
       <View >
@@ -73,7 +110,7 @@ const styles = StyleSheet.create({
         paddingStart:15,
         },
         connect:{
-            paddingTop:40,
+            paddingTop:15,
             fontSize:17,
             alignSelf:"center"
         },
