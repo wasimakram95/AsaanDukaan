@@ -1,24 +1,40 @@
-import React, { useContext } from "react";
-
-
-import { NavigationContainer } from '@react-navigation/native';
+import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  ImageBackground,
+  FlatList,
+  Dimensions,Image,
+  TouchableOpacity,TouchableHighlight
+} from 'react-native';
 
+import InitialStack from "../Screens/Startup/slidescreens";
+import Home from "../Screens/Home/Home";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-import BottomtabNavigator from "./BottomtabNavigator";
-import Stacknavigator from "./Stacknavigator";
 
 const Stack = createStackNavigator();
-    
 export default function Main() {
-  return (
-    <NavigationContainer>
-    <Stack.Navigator initialRouteName="MyStacker" headerMode="none">
-      <Stack.Screen name="MyStacker" component={Stacknavigator} />
-      <Stack.Screen name="Mytab" component={BottomtabNavigator} />
+return(
+  <View style= {Mystyle.container}>
+    <Stack.Navigator initialRouteName="InitialStart" headerMode="none">
+      <Stack.Screen name="HomeScreen" component={Home} />
+      <Stack.Screen name="InitialStart" component={InitialStack} />
     </Stack.Navigator>
-
-    </NavigationContainer>
-    
-      );
+    </View>
+    );
 }
+
+
+const Mystyle= StyleSheet.create({
+  container:{
+    height: hp('100%'), // 70% of height device screen
+    width: wp('100%')   // 80% of width device screen
+  }
+});

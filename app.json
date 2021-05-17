@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "myproject",
-    "slug": "myproject",
+    "name": "AsaanDukaan",
+    "slug": "AsaanDukaan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/screen01.png",
@@ -17,16 +17,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.FYP.AsaanDukaan",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/screen01.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "foregroundImage": "./assets/images/screen01.png"
+      },
+      "package": "com.FYP.AsaanDukaan",
+      "versionCode": 1
+
     },
-    "web": {
+        "web": {
       "favicon": "./assets/images/screen01.png"
     }
   }
 }
+

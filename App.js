@@ -14,8 +14,7 @@ import Auth from "./Context/store/Auth";
 // Navigatiors
 import Main from "./Navigators/Main";
 
-// Screens
-import Header from "./Shared/Header";
+import { NavigationContainer } from '@react-navigation/native';
 
 LogBox.ignoreAllLogs(true);
 
@@ -23,9 +22,12 @@ export default function App() {
   return (
     <Auth>
       <Provider store={store}>
-          <Main />
-          <Toast ref={(ref) => Toast.setRef(ref)} />
-        
+      <NavigationContainer>
+      <Main />
+      <Toast ref={(ref) => Toast.setRef(ref)} />
+
+    </NavigationContainer>
+         
       </Provider>
     </Auth>
   );
